@@ -1,0 +1,165 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/cigarro-mojao/goofy-zombie-mods/schemas/manifest.schema.json",
+  "title": "Goofy Zombie Mod API v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "api_version",
+    "id",
+    "version",
+    "name",
+    "author",
+    "game_version"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "api_version": {
+      "const": 1
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]{0,63}$"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$"
+    },
+    "name": {
+      "oneOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "object",
+          "required": [
+            "en"
+          ],
+          "additionalProperties": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      ]
+    },
+    "author": {
+      "type": "string",
+      "minLength": 1
+    },
+    "description": {
+      "oneOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "object",
+          "required": [
+            "en"
+          ],
+          "additionalProperties": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      ]
+    },
+    "game_version": {
+      "type": "string",
+      "pattern": "^(\\*|(0|[1-9][0-9]*)\\.(\\*\\.(\\*)|(0|[1-9][0-9]*)\\.(\\*|0|[1-9][0-9]*)))$"
+    },
+    "dependencies": {
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^[a-z][a-z0-9_]{0,63}$"
+      },
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^(\\*|(0|[1-9][0-9]*)\\.(\\*\\.(\\*)|(0|[1-9][0-9]*)\\.(\\*|0|[1-9][0-9]*)))$"
+      }
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "website": {
+      "type": "string"
+    },
+    "repository": {
+      "type": "string"
+    },
+    "last_update": {
+      "type": "string"
+    },
+    "credits": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "link": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "icon": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "\\.png$"
+        },
+        "frame_width": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 256
+        },
+        "frame_height": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 256
+        },
+        "frames": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 256
+        },
+        "fps": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 60
+        }
+      }
+    },
+    "rules": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "player.invulnerable": {
+          "type": "boolean"
+        },
+        "multiplayer.max_players": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 64
+        }
+      }
+    }
+  }
+}

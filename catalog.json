@@ -1,0 +1,14 @@
+{
+  "mods": [
+    {
+      "id": "god_mode",
+      "url": "https://github.com/cigarro-mojao/gzm-god-mode",
+      "sha256": "13e757484c9128d4e00d6c1e96832af0267234f0dc81fb2962c0528912767cf5"
+    },
+    {
+      "id": "unlock_maximum_players",
+      "url": "https://github.com/cigarro-mojao/gzm-unlock-maximum-players",
+      "sha256": "49c4c457f0b13ffa265f1cd09ef09118125b998f106050da8302009830793e6b"
+    }
+  ]
+}
